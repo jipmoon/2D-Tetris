@@ -8,6 +8,17 @@ public class Board : MonoBehaviour {
 	public int m_width = 30;
 
 	public int m_header = 8;
+
+	// Use 2-D array to store the data for every grid
+	Transform[,] m_grid;
+
+
+	// Awake is called when script is loaded (Awake is a pre-start, anything you want to run before start)
+	void Awake() {
+		m_grid = new Transform[m_width, m_height];
+	}
+
+	// Start is called when script is enabled before any calls to update happen
 	// Use this for initialization
 	void Start () {
 		DrawEmptyCells();
