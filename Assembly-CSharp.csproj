@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Core\Board.cs" />
+     <Compile Include="Assets\Scripts\Core\Shape.cs" />
+     <Compile Include="Assets\Scripts\Core\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameController.cs" />
+     <Compile Include="Assets\Scripts\Utility\Vectorf.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
