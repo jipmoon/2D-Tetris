@@ -4,8 +4,13 @@ using System.Collections;
 
 public class Board : MonoBehaviour {
 
+	// a SpriteRenderer that will be instantiated in a grid to create our board
 	public Transform m_emptySprite;
+	// the height of the board
+
 	public int m_height = 30;
+		// width of the board
+
 	public int m_width = 10;
 	public int m_header = 10;
 
@@ -51,7 +56,11 @@ public class Board : MonoBehaviour {
 
 					//Vector3 takes one counter from x and one counter from y
 					clone = Instantiate(m_emptySprite, new Vector3(x, y, 0), Quaternion.identity) as Transform;
+										// names the empty squares for organizational purposes
+
 					clone.name = "Board Space ( x = " + x.ToString() +  " , y =" + y.ToString() + " )"; 
+							// parents all of the empty squares to the Board object
+
 					clone.transform.parent = transform;
 				}
 			}
