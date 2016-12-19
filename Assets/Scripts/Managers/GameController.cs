@@ -9,6 +9,16 @@ public class GameController : MonoBehaviour {
 	// reference to our spawner 
 	Spawner m_spawner;
 
+	// Create a variable for currently active shape
+	Shape m_activeShape;
+
+	// Make 1 second by default
+	float m_dropInterval = 1f;
+
+	// float and represents a game time when the next event is going to happen
+	float m_timeToDrop;
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,6 +34,11 @@ public class GameController : MonoBehaviour {
 
 		if (m_spawner)
 		{
+			if (m_activeShape == null) {
+
+				m_activeShape = m_spawner.SpawnShape();
+			}
+
 			m_spawner.transform.position = Vectorf.Round(m_spawner.transform.position);
 		}
 			
@@ -48,6 +63,25 @@ public class GameController : MonoBehaviour {
 		{
 			return;
 		}
+
+		if(Time.time >  m_timeToDrop) {
+
+			m_timeToDrop = Time.time + m_dropInterval;
+			//if there is an active shape 
+			if (m_activeShape) {
+
+				// shape landing
+				m_activeShape.MoveDown();
+				m_gameBoard.StoreShapeInGrid(m_activeShape);
+				//validate the shape's new position after we move it down by using is valid position
+
+				if(!m_gameBoard.IsValidPosition (m_activeShape)) {
+
+					m_activeShape.MoveUp();
+				}
+			}
+		}
+
 
 	}
 }
